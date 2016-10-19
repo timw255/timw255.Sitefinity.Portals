@@ -1,0 +1,29 @@
+﻿@model timw255.Sitefinity.Portals.MVC.Models.DashboardToolboxViewModel
+
+@Html.StyleSheet(Url.WidgetContent("/Frontend-Assembly/timw255.Sitefinity.Portals/Resources/jquery-ui.min.css"), "head")
+@Html.StyleSheet(Url.WidgetContent("/Frontend-Assembly/timw255.Sitefinity.Portals/Resources/theme.css"), "head")
+@Html.StyleSheet(Url.WidgetContent("/Frontend-Assembly/timw255.Sitefinity.Portals/Resources/portals.css"), "head")
+
+@Html.Script(ScriptRef.JQueryUI, "bottom")
+@Html.Script("/Frontend-Assembly/timw255.Sitefinity.Portals/Resources/portals.js", "bottom")
+
+<div class="toolbox clearfix">
+    <div class="toolbox-items clearfix">
+        @foreach (var item in Model.DashboardToolboxItems)
+        {
+            <div class='toolbox-item' data-item-title='@Html.Raw(item.Title)' data-controller-type='@Html.Raw(item.ControllerType)' data-properties='@Html.Raw(Json.Encode(item.Properties))'>
+                <h2>@Html.Raw(item.Title)
+                <span class="remove">Remove</span>
+                @if (item.Properties.Any())
+                {
+                    <span class="edit">Edit</span>
+                }
+                </h2>
+            </div>
+        }
+    </div>
+    <div class="controls">
+        <button id="save" href="#">Save</button>
+        <button id="cancel" href="#">Cancel</button>
+    </div>
+</div>

@@ -1,0 +1,13 @@
+﻿@model timw255.Sitefinity.Portals.MVC.Models.DashboardViewModel
+
+<div class="dashboard">
+    @foreach (var item in Model.DashboardItems)
+    {
+        <div class="dashboard-item" data-controller-type='@Html.Raw(item.ControllerType)'>
+            <h2>@Html.Raw(item.Title)</h2>
+            <div class="item-container">
+                @Html.Raw(item.Html)
+            </div>
+        </div>
+    }
+</div>
